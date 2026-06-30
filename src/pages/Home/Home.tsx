@@ -13,6 +13,7 @@ import WhyChoose from './sections/WhyChoose';
 import SecuritySection from './sections/SecuritySection';
 import Testimonials from './sections/Testimonials';
 import PricingPreview from './sections/PricingPreview';
+import ROICalculator from './sections/ROICalculator';
 import FAQ from './sections/FAQ';
 import CTA from './sections/CTA';
 
@@ -49,12 +50,13 @@ export default function Home() {
       <Hero />
       <TrustedBy />
       <Statistics />
+      <Solutions />
       <ProductOverview />
       <Features />
       <AIAgentsPreview />
-      <Solutions />
       <ProductTour />
       <Benefits />
+      <ROICalculator />
       <WhyChoose />
       <SecuritySection />
       <Testimonials />

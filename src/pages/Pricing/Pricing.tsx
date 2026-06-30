@@ -194,6 +194,54 @@ export default function Pricing() {
         </div>
       </section>
 
+      <section className={styles.roiSection}>
+        <div className="container-custom">
+          <AnimateOnScroll>
+            <div className={styles.roiCard}>
+              <div className={styles.roiHeader}>
+                <h2>Average ROI from LexPilot AI Customers</h2>
+                <p>Based on data from 500+ law firms using LexPilot AI</p>
+              </div>
+              <div className={styles.roiGrid}>
+                <div className={styles.roiItem}>
+                  <span className={styles.roiValue}>10+</span>
+                  <span className={styles.roiLabel}>Hours saved per lawyer per week</span>
+                </div>
+                <div className={styles.roiItem}>
+                  <span className={styles.roiValue}>₹2.5L+</span>
+                  <span className={styles.roiLabel}>Average monthly savings per firm</span>
+                </div>
+                <div className={styles.roiItem}>
+                  <span className={styles.roiValue}>3x</span>
+                  <span className={styles.roiLabel}>More cases handled per lawyer</span>
+                </div>
+                <div className={styles.roiItem}>
+                  <span className={styles.roiValue}>45 days</span>
+                  <span className={styles.roiLabel}>Average time to full ROI</span>
+                </div>
+              </div>
+            </div>
+          </AnimateOnScroll>
+        </div>
+      </section>
+
+      <section className={styles.socialProof}>
+        <div className="container-custom">
+          <AnimateOnScroll>
+            <div className={styles.socialProofInner}>
+              <div className={styles.testimonialQuote}>
+                <i className="bi bi-quote" aria-hidden="true" />
+                <blockquote>"Switching to the Professional plan paid for itself within the first month. Our research time dropped by 80%, and we took on 5 additional clients."</blockquote>
+                <div className={styles.testimonialAuthor}>
+                  <strong>Adv. Priya Mehta</strong>
+                  <span>Managing Partner, Mehta & Associates, Mumbai</span>
+                </div>
+              </div>
+            </div>
+          </AnimateOnScroll>
+        </div>
+      </section>
+
       <section className={`section section--gray ${styles.comparison}`}>
         <div className="container-custom">
           <AnimateOnScroll>

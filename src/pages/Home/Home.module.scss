@@ -110,6 +110,25 @@
   }
 }
 
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-2;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $primary;
+  background: $primary-50;
+  border: 1px solid $primary-100;
+  padding: $spacing-1 $spacing-4;
+  border-radius: $radius-full;
+  margin-bottom: $spacing-6;
+}
+
+.heroBadgeIcon {
+  font-size: $font-size-base;
+  color: $primary;
+}
+
 .heroTitle {
   font-size: $font-size-4xl;
   font-weight: $font-weight-extrabold;
@@ -142,6 +161,7 @@
   display: flex;
   gap: $spacing-3;
   justify-content: center;
+  flex-wrap: wrap;
   margin-bottom: $spacing-6;
 
   @include respond-to(lg) {
@@ -159,6 +179,27 @@
   @include btn-secondary;
   padding: $spacing-4 $spacing-8;
   font-size: $font-size-base;
+}
+
+.heroTertiary {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $gray-600;
+  text-decoration: none;
+  padding: $spacing-4 $spacing-4;
+  transition: color $transition-fast;
+
+  i {
+    font-size: $font-size-xl;
+    color: $primary;
+  }
+
+  &:hover {
+    color: $primary;
+  }
 }
 
 .heroMeta {
@@ -182,6 +223,57 @@
       color: $success;
       font-size: $font-size-xs;
     }
+  }
+}
+
+.heroStats {
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+  margin-top: $spacing-8;
+  padding: $spacing-4 $spacing-6;
+  background: $gray-50;
+  border-radius: $radius-xl;
+  border: 1px solid $gray-100;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @include respond-to(lg) {
+    justify-content: flex-start;
+  }
+}
+
+.heroStat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.heroStatValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $primary;
+
+  @include respond-to(md) {
+    font-size: $font-size-2xl;
+  }
+}
+
+.heroStatLabel {
+  font-size: $font-size-xs;
+  color: $gray-500;
+  white-space: nowrap;
+}
+
+.heroStatDivider {
+  width: 1px;
+  height: 32px;
+  background: $gray-200;
+  display: none;
+
+  @include respond-to(sm) {
+    display: block;
   }
 }
 
@@ -1650,4 +1742,225 @@
   font-size: $font-size-sm;
   color: rgba($white, 0.6);
   position: relative;
+}
+
+// ROI Calculator Section
+.roiCalculator {
+  padding: $spacing-16 0;
+  background: $gray-50;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: $spacing-12;
+}
+
+.sectionBadge {
+  display: inline-block;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  color: $primary;
+  background: $primary-50;
+  border: 1px solid $primary-100;
+  padding: $spacing-1 $spacing-3;
+  border-radius: $radius-full;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wider;
+  margin-bottom: $spacing-4;
+}
+
+.sectionTitle {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: $gray-900;
+  margin-bottom: $spacing-3;
+
+  @include respond-to(md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+.sectionSubtitle {
+  font-size: $font-size-lg;
+  color: $gray-500;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.roiLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-8;
+
+  @include respond-to(lg) {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-12;
+  }
+}
+
+.roiSliders {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+  background: $white;
+  border-radius: $radius-xl;
+  border: 1px solid $gray-200;
+  padding: $spacing-6;
+}
+
+.sliderGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+}
+
+.sliderLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $gray-700;
+}
+
+.sliderValue {
+  font-weight: $font-weight-bold;
+  color: $primary;
+  background: $primary-50;
+  padding: 2px $spacing-2;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+}
+
+.slider {
+  width: 100%;
+  height: 6px;
+  border-radius: $radius-full;
+  background: $gray-200;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: $primary;
+    box-shadow: 0 2px 6px rgba($primary, 0.3);
+    cursor: pointer;
+    transition: transform $transition-fast;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: $primary;
+    border: none;
+    box-shadow: 0 2px 6px rgba($primary, 0.3);
+    cursor: pointer;
+  }
+}
+
+.sliderRange {
+  display: flex;
+  justify-content: space-between;
+  font-size: $font-size-xs;
+  color: $gray-400;
+}
+
+.roiResults {
+  background: $white;
+  border-radius: $radius-xl;
+  border: 1px solid $gray-200;
+  padding: $spacing-6;
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-6;
+    color: $gray-900;
+  }
+}
+
+.roiResultsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-4;
+  margin-bottom: $spacing-6;
+  flex: 1;
+}
+
+.roiResultCard {
+  background: $gray-50;
+  border: 1px solid $gray-100;
+  border-radius: $radius-lg;
+  padding: $spacing-4;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $spacing-1;
+
+  &.roiHighlight {
+    background: $primary-50;
+    border-color: $primary-100;
+  }
+}
+
+.roiResultValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-extrabold;
+  color: $primary;
+
+  @include respond-to(md) {
+    font-size: $font-size-2xl;
+  }
+}
+
+.roiResultLabel {
+  font-size: $font-size-xs;
+  color: $gray-500;
+}
+
+.roiMonthly {
+  text-align: center;
+  font-size: $font-size-sm;
+  color: $gray-600;
+  margin-bottom: $spacing-6;
+  padding: $spacing-3;
+  background: $gray-50;
+  border-radius: $radius-md;
+
+  strong {
+    color: $primary;
+    font-size: $font-size-base;
+  }
+}
+
+.roiCta {
+  display: flex;
+  gap: $spacing-3;
+  justify-content: center;
+}
+
+.roiCtaBtn {
+  @include btn-primary;
+  font-size: $font-size-sm;
+  padding: $spacing-3 $spacing-5;
+}
+
+.roiCtaSecondary {
+  @include btn-secondary;
+  font-size: $font-size-sm;
+  padding: $spacing-3 $spacing-5;
 }

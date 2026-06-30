@@ -16,27 +16,56 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
+          <div className={styles.heroBadge}>
+            <span className={styles.heroBadgeIcon}><i className="bi bi-stars" aria-hidden="true" /></span>
+            Trusted by 500+ Indian Law Firms
+          </div>
           <h1 className={styles.heroTitle}>
-            The AI Assistant Built for{' '}
-            <span className="gradient-text">Indian Law Firms</span>
+            Reduce Legal Research by 80%.{' '}
+            <span className="gradient-text">Win More Cases.</span>
           </h1>
           <p className={styles.heroSubtitle}>
-            Empowering lawyers with AI-powered legal research, intelligent drafting, contract review, 
-            compliance monitoring, case management, and knowledge management — all built for Indian law.
+            India's most comprehensive AI legal platform — research 80+ years of case law in seconds, 
+            generate court-ready drafts in minutes, and manage your entire practice from one dashboard.
           </p>
           <div className={styles.heroActions}>
             <Link to="/schedule-demo" className={styles.heroPrimary}>
-              Schedule Demo
+              Book a Demo
               <i className="bi bi-arrow-right" aria-hidden="true" />
             </Link>
             <Link to="/free-trial" className={styles.heroSecondary}>
               Start Free Trial
             </Link>
+            <a href="#product-tour" className={styles.heroTertiary}>
+              <i className="bi bi-play-circle" aria-hidden="true" />
+              Watch Product Tour
+            </a>
           </div>
           <div className={styles.heroMeta}>
             <span><i className="bi bi-check-circle-fill" aria-hidden="true" /> No credit card required</span>
             <span><i className="bi bi-check-circle-fill" aria-hidden="true" /> 14-day free trial</span>
             <span><i className="bi bi-check-circle-fill" aria-hidden="true" /> Setup in 5 minutes</span>
+          </div>
+          <div className={styles.heroStats}>
+            <div className={styles.heroStat}>
+              <span className={styles.heroStatValue}>10x</span>
+              <span className={styles.heroStatLabel}>Faster Research</span>
+            </div>
+            <div className={styles.heroStatDivider} />
+            <div className={styles.heroStat}>
+              <span className={styles.heroStatValue}>60%</span>
+              <span className={styles.heroStatLabel}>Cost Reduction</span>
+            </div>
+            <div className={styles.heroStatDivider} />
+            <div className={styles.heroStat}>
+              <span className={styles.heroStatValue}>94%+</span>
+              <span className={styles.heroStatLabel}>AI Accuracy</span>
+            </div>
+            <div className={styles.heroStatDivider} />
+            <div className={styles.heroStat}>
+              <span className={styles.heroStatValue}>99.9%</span>
+              <span className={styles.heroStatLabel}>Uptime SLA</span>
+            </div>
           </div>
         </motion.div>
         <motion.div

@@ -182,10 +182,38 @@
   }
 }
 
+.trialLink {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $primary;
+  text-decoration: none;
+  padding: $spacing-2 $spacing-4;
+  border-radius: $radius-md;
+  border: 1px solid $primary-200;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $primary-50;
+    border-color: $primary;
+    color: $primary-dark;
+  }
+}
+
 .ctaBtn {
   @include btn-primary;
   font-size: $font-size-sm;
   padding: $spacing-2 $spacing-5;
+  box-shadow: $shadow-md;
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: $shadow-md;
+  }
+  50% {
+    box-shadow: 0 0 16px rgba($primary, 0.4), $shadow-md;
+  }
 }
 
 // Hamburger
@@ -291,6 +319,22 @@
   flex-direction: column;
   gap: $spacing-3;
   padding-top: $spacing-6;
+}
+
+.mobileLoginLink {
+  display: block;
+  text-align: center;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $gray-600;
+  text-decoration: none;
+  padding: $spacing-3;
+  border-radius: $radius-md;
+
+  &:hover {
+    color: $gray-900;
+    background: $gray-50;
+  }
 }
 
 .mobileSecondary {

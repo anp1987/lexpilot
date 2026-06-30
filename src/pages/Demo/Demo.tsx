@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import SEOHead from '@/components/seo/SEOHead';
@@ -39,10 +39,49 @@ const meetingTypes = [
 
 export default function Demo() {
   const [currentStep, setCurrentStep] = useState(0);
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<DemoFormData>();
+  const { register, handleSubmit, watch, trigger, setValue, formState: { errors } } = useForm<DemoFormData>({ mode: 'onChange' });
   const formData = watch();
 
-  const nextStep = () => setCurrentStep((s) => Math.min(s + 1, steps.length - 1));
+  const formatPhone = useCallback((value: string) => {
+    const digits = value.replace(/\D/g, '').slice(0, 12);
+    if (digits.startsWith('91')) {
+      const rest = digits.slice(2);
+      if (rest.length <= 5) return `+91 ${rest}`;
+      return `+91 ${rest.slice(0, 5)} ${rest.slice(5)}`;
+    }
+    if (digits.length <= 5) return digits;
+    if (digits.length <= 10) return `${digits.slice(0, 5)} ${digits.slice(5)}`;
+    return `+${digits.slice(0, 2)} ${digits.slice(2, 7)} ${digits.slice(7)}`;
+  }, []);
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhone(e.target.value);
+    setValue('phone', formatted, { shouldValidate: true });
+  };
+
+  const validateStep = async () => {
+    switch (currentStep) {
+      case 0:
+        return await trigger(['firstName', 'lastName', 'email', 'phone']);
+      case 1:
+        return await trigger(['companyName', 'designation']);
+      case 2:
+        return await trigger('firmSize');
+      case 3:
+        return await trigger('preferredDate');
+      case 4:
+        return await trigger('preferredTime');
+      case 5:
+        return await trigger('meetingType');
+      default:
+        return true;
+    }
+  };
+
+  const nextStep = async () => {
+    const valid = await validateStep();
+    if (valid) setCurrentStep((s) => Math.min(s + 1, steps.length - 1));
+  };
   const prevStep = () => setCurrentStep((s) => Math.max(s - 1, 0));
 
   const onSubmit = () => {
@@ -110,22 +149,22 @@ export default function Demo() {
                         <div className={styles.formGrid}>
                           <div className={styles.field}>
                             <label htmlFor="firstName">First Name *</label>
-                            <input id="firstName" type="text" {...register('firstName', { required: 'First name is required' })} placeholder="Priya" />
+                            <input id="firstName" type="text" {...register('firstName', { required: 'First name is required', minLength: { value: 2, message: 'Minimum 2 characters' }, pattern: { value: /^[A-Za-z\s]+$/, message: 'Only letters allowed' } })} placeholder="Priya" />
                             {errors.firstName && <span className={styles.error}>{errors.firstName.message}</span>}
                           </div>
                           <div className={styles.field}>
                             <label htmlFor="lastName">Last Name *</label>
-                            <input id="lastName" type="text" {...register('lastName', { required: 'Last name is required' })} placeholder="Sharma" />
+                            <input id="lastName" type="text" {...register('lastName', { required: 'Last name is required', minLength: { value: 2, message: 'Minimum 2 characters' }, pattern: { value: /^[A-Za-z\s]+$/, message: 'Only letters allowed' } })} placeholder="Sharma" />
                             {errors.lastName && <span className={styles.error}>{errors.lastName.message}</span>}
                           </div>
                           <div className={styles.field}>
                             <label htmlFor="email">Work Email *</label>
-                            <input id="email" type="email" {...register('email', { required: 'Email is required', pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: 'Invalid email' } })} placeholder="priya@lawfirm.com" />
+                            <input id="email" type="email" {...register('email', { required: 'Email is required', pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: 'Invalid email address' } })} placeholder="priya@lawfirm.com" />
                             {errors.email && <span className={styles.error}>{errors.email.message}</span>}
                           </div>
                           <div className={styles.field}>
                             <label htmlFor="phone">Phone Number *</label>
-                            <input id="phone" type="tel" {...register('phone', { required: 'Phone is required' })} placeholder="+91 98765 43210" />
+                            <input id="phone" type="tel" {...register('phone', { required: 'Phone number is required', validate: (value) => { const digits = value.replace(/\D/g, ''); return digits.length >= 10 || 'Enter a valid 10-digit phone number'; } })} placeholder="+91 98765 43210" onChange={handlePhoneChange} />
                             {errors.phone && <span className={styles.error}>{errors.phone.message}</span>}
                           </div>
                         </div>
@@ -139,17 +178,18 @@ export default function Demo() {
                         <div className={styles.formGrid}>
                           <div className={styles.field}>
                             <label htmlFor="companyName">Firm/Company Name *</label>
-                            <input id="companyName" type="text" {...register('companyName', { required: 'Company name is required' })} placeholder="Sharma & Associates" />
+                            <input id="companyName" type="text" {...register('companyName', { required: 'Company name is required', minLength: { value: 2, message: 'Minimum 2 characters' } })} placeholder="Sharma & Associates" />
                             {errors.companyName && <span className={styles.error}>{errors.companyName.message}</span>}
                           </div>
                           <div className={styles.field}>
                             <label htmlFor="designation">Your Designation *</label>
-                            <input id="designation" type="text" {...register('designation', { required: 'Designation is required' })} placeholder="Senior Partner" />
+                            <input id="designation" type="text" {...register('designation', { required: 'Designation is required', minLength: { value: 2, message: 'Minimum 2 characters' } })} placeholder="Senior Partner" />
                             {errors.designation && <span className={styles.error}>{errors.designation.message}</span>}
                           </div>
                           <div className={`${styles.field} ${styles.fullWidth}`}>
                             <label htmlFor="website">Website (optional)</label>
-                            <input id="website" type="url" {...register('website')} placeholder="https://www.lawfirm.com" />
+                            <input id="website" type="url" {...register('website', { pattern: { value: /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,}(\/\S*)?$/, message: 'Enter a valid URL' } })} placeholder="https://www.lawfirm.com" />
+                            {errors.website && <span className={styles.error}>{errors.website.message}</span>}
                           </div>
                         </div>
                       </div>
@@ -162,12 +202,13 @@ export default function Demo() {
                         <div className={styles.optionGrid}>
                           {firmSizes.map((size) => (
                             <label key={size.value} className={`${styles.optionCard} ${formData.firmSize === size.value ? styles.selected : ''}`}>
-                              <input type="radio" value={size.value} {...register('firmSize', { required: true })} />
+                              <input type="radio" value={size.value} {...register('firmSize', { required: 'Please select your firm size' })} />
                               <span className={styles.optionLabel}>{size.label}</span>
                               <span className={styles.optionDesc}>{size.desc}</span>
                             </label>
                           ))}
                         </div>
+                        {errors.firmSize && <span className={styles.error}>{errors.firmSize.message}</span>}
                       </div>
                     )}
 
@@ -177,7 +218,8 @@ export default function Demo() {
                         <p>Select your preferred demo date.</p>
                         <div className={styles.dateField}>
                           <label htmlFor="preferredDate">Select Date *</label>
-                          <input id="preferredDate" type="date" min={getMinDate()} {...register('preferredDate', { required: true })} />
+                          <input id="preferredDate" type="date" min={getMinDate()} {...register('preferredDate', { required: 'Please select a date' })} />
+                          {errors.preferredDate && <span className={styles.error}>{errors.preferredDate.message}</span>}
                         </div>
                         <p className={styles.dateNote}>Demos are available Monday to Friday, IST timezone.</p>
                       </div>
@@ -190,11 +232,12 @@ export default function Demo() {
                         <div className={styles.timeGrid}>
                           {timeSlots.map((time) => (
                             <label key={time} className={`${styles.timeSlot} ${formData.preferredTime === time ? styles.selected : ''}`}>
-                              <input type="radio" value={time} {...register('preferredTime', { required: true })} />
+                              <input type="radio" value={time} {...register('preferredTime', { required: 'Please select a time slot' })} />
                               <span>{time}</span>
                             </label>
                           ))}
                         </div>
+                        {errors.preferredTime && <span className={styles.error}>{errors.preferredTime.message}</span>}
                       </div>
                     )}
 
@@ -205,13 +248,14 @@ export default function Demo() {
                         <div className={styles.meetingOptions}>
                           {meetingTypes.map((type) => (
                             <label key={type.value} className={`${styles.meetingCard} ${formData.meetingType === type.value ? styles.selected : ''}`}>
-                              <input type="radio" value={type.value} {...register('meetingType', { required: true })} />
+                              <input type="radio" value={type.value} {...register('meetingType', { required: 'Please select a meeting type' })} />
                               <i className={`bi ${type.icon}`} aria-hidden="true" />
                               <span className={styles.meetingLabel}>{type.label}</span>
                               <span className={styles.meetingDesc}>{type.desc}</span>
                             </label>
                           ))}
                         </div>
+                        {errors.meetingType && <span className={styles.error}>{errors.meetingType.message}</span>}
                       </div>
                     )}
 

@@ -5,11 +5,11 @@ import styles from './Navbar.module.scss';
 
 const navLinks = [
   {
-    label: 'Product',
+    label: 'Platform',
     href: '/product',
     megaMenu: [
       {
-        title: 'Platform',
+        title: 'Product',
         items: [
           { label: 'Product Overview', href: '/product', icon: 'bi-box', desc: 'Complete legal AI platform' },
           { label: 'AI Agents', href: '/ai-agents', icon: 'bi-robot', desc: 'Autonomous legal AI agents' },
@@ -66,16 +66,31 @@ const navLinks = [
           { label: 'Blog', href: '/blog', icon: 'bi-journal-text', desc: 'Insights & articles' },
           { label: 'Customer Stories', href: '/customer-stories', icon: 'bi-chat-quote', desc: 'Success stories' },
           { label: 'FAQ', href: '/faq', icon: 'bi-question-circle', desc: 'Common questions' },
-          { label: 'Roadmap', href: '/roadmap', icon: 'bi-map', desc: 'What we\'re building' },
+          { label: 'Support', href: '/support', icon: 'bi-headset', desc: 'Help center & support' },
         ],
       },
       {
-        title: 'Company',
+        title: 'Developers',
+        items: [
+          { label: 'Roadmap', href: '/roadmap', icon: 'bi-map', desc: 'What we\'re building' },
+          { label: 'Release Notes', href: '/release-notes', icon: 'bi-megaphone', desc: 'Latest updates' },
+          { label: 'Status', href: '/status', icon: 'bi-activity', desc: 'System uptime & health' },
+          { label: 'Partners', href: '/partners', icon: 'bi-handshake', desc: 'Partner program' },
+        ],
+      },
+    ],
+  },
+  {
+    label: 'Company',
+    href: '/about',
+    megaMenu: [
+      {
+        title: 'About Us',
         items: [
           { label: 'About', href: '/about', icon: 'bi-info-circle', desc: 'Our mission & team' },
-          { label: 'Careers', href: '/careers', icon: 'bi-briefcase', desc: 'Join our team' },
-          { label: 'Partners', href: '/partners', icon: 'bi-handshake', desc: 'Partner program' },
-          { label: 'Release Notes', href: '/release-notes', icon: 'bi-megaphone', desc: 'Latest updates' },
+          { label: 'Careers', href: '/careers', icon: 'bi-people', desc: 'Join our team' },
+          { label: 'Contact Sales', href: '/contact-sales', icon: 'bi-telephone', desc: 'Talk to our team' },
+          { label: 'Trust Center', href: '/security', icon: 'bi-shield-lock', desc: 'Security & compliance' },
         ],
       },
     ],
@@ -177,11 +192,14 @@ export default function Navbar() {
         </div>
 
         <div className={styles.actions}>
-          <Link to="/contact-sales" className={styles.loginLink}>
-            Contact Sales
+          <Link to="/login" className={styles.loginLink}>
+            Login
+          </Link>
+          <Link to="/free-trial" className={styles.trialLink}>
+            Free Trial
           </Link>
           <Link to="/schedule-demo" className={styles.ctaBtn}>
-            Schedule Demo
+            Book Demo
           </Link>
         </div>
 
@@ -227,11 +245,14 @@ export default function Navbar() {
                 </div>
               ))}
               <div className={styles.mobileActions}>
-                <Link to="/contact-sales" className={styles.mobileSecondary}>
-                  Contact Sales
+                <Link to="/login" className={styles.mobileLoginLink}>
+                  Login
+                </Link>
+                <Link to="/free-trial" className={styles.mobileSecondary}>
+                  Start Free Trial
                 </Link>
                 <Link to="/schedule-demo" className={styles.mobilePrimary}>
-                  Schedule Demo
+                  Book Demo
                 </Link>
               </div>
             </div>

@@ -791,6 +791,25 @@
   }
 }
 
+.tourTabStep {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: $gray-200;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  color: $gray-600;
+  margin-right: $spacing-1;
+
+  .active & {
+    background: rgba($white, 0.2);
+    color: $white;
+  }
+}
+
 .tourScreen {
   background: $white;
   border: 1px solid $gray-200;
@@ -802,6 +821,42 @@
 .tourContent {
   padding: $spacing-6;
   min-height: 400px;
+}
+
+.tourNavigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-4;
+  padding: $spacing-4;
+  border-top: 1px solid $gray-100;
+  background: $gray-50;
+}
+
+.tourNavBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: $white;
+  border: 1px solid $gray-200;
+  color: $gray-600;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $primary;
+    color: $white;
+    border-color: $primary;
+  }
+}
+
+.tourStepIndicator {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $gray-500;
 }
 
 .mockupScreen {

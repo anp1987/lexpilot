@@ -290,7 +290,29 @@ export default function Demo() {
                             <div><i className="bi bi-clock" aria-hidden="true" /> {formData.preferredTime} IST</div>
                             <div><i className="bi bi-camera-video" aria-hidden="true" /> {formData.meetingType}</div>
                           </div>
-                          <p className={styles.confirmNote}>A calendar invite will be sent shortly. If you need to reschedule, reply to the confirmation email.</p>
+                          <div className={styles.calendarIntegrations}>
+                            <p className={styles.calendarTitle}>Add to your calendar:</p>
+                            <div className={styles.calendarButtons}>
+                              <button type="button" className={styles.calendarBtn} aria-label="Add to Google Calendar">
+                                <i className="bi bi-google" aria-hidden="true" /> Google Calendar
+                              </button>
+                              <button type="button" className={styles.calendarBtn} aria-label="Add to Outlook">
+                                <i className="bi bi-microsoft" aria-hidden="true" /> Outlook
+                              </button>
+                              <button type="button" className={styles.calendarBtn} aria-label="Add to Apple Calendar">
+                                <i className="bi bi-apple" aria-hidden="true" /> Apple Calendar
+                              </button>
+                            </div>
+                          </div>
+                          <div className={styles.meetingPlatforms}>
+                            <p className={styles.calendarTitle}>Meeting link will be sent via:</p>
+                            <div className={styles.platformBadges}>
+                              <span className={styles.platformBadge}><i className="bi bi-camera-video" aria-hidden="true" /> Microsoft Teams</span>
+                              <span className={styles.platformBadge}><i className="bi bi-play-circle" aria-hidden="true" /> Zoom</span>
+                              <span className={styles.platformBadge}><i className="bi bi-google" aria-hidden="true" /> Google Meet</span>
+                            </div>
+                          </div>
+                          <p className={styles.confirmNote}>A calendar invite will be sent shortly. If you need to reschedule, reply to the confirmation email or use the link in the invite.</p>
                         </div>
                       </div>
                     )}

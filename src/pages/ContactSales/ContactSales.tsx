@@ -157,12 +157,50 @@ export default function ContactSales() {
               </AnimateOnScroll>
 
               <AnimateOnScroll delay={0.3}>
-                <div style={{ background: '#f9fafb', borderRadius: '1rem', padding: '2rem', border: '1px solid #e5e7eb' }}>
+                <div style={{ background: '#f9fafb', borderRadius: '1rem', padding: '2rem', border: '1px solid #e5e7eb', marginBottom: '1.5rem' }}>
                   <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1.25rem' }}><i className="bi bi-telephone" style={{ marginRight: '0.5rem', color: '#4f46e5' }} />Direct Lines</h3>
                   <div style={{ fontSize: '0.9rem', color: '#4b5563', lineHeight: 2.2 }}>
                     <div><strong>Sales:</strong> +91 80 4567 8901</div>
                     <div><strong>Support:</strong> +91 80 4567 8902</div>
                     <div><strong>Email:</strong> contact@lexpilot.ai</div>
+                  </div>
+                </div>
+              </AnimateOnScroll>
+
+              <AnimateOnScroll delay={0.4}>
+                <div style={{ background: '#f9fafb', borderRadius: '1rem', padding: '2rem', border: '1px solid #e5e7eb', marginBottom: '1.5rem' }}>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1.25rem' }}><i className="bi bi-chat-dots" style={{ marginRight: '0.5rem', color: '#4f46e5' }} />Quick Connect</h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                    <button type="button" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem 1rem', background: '#25D366', color: 'white', border: 'none', borderRadius: '0.5rem', cursor: 'pointer', fontWeight: 500, fontSize: '0.875rem' }}>
+                      <i className="bi bi-whatsapp" /> Chat on WhatsApp
+                    </button>
+                    <button type="button" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.75rem 1rem', background: '#1a56db', color: 'white', border: 'none', borderRadius: '0.5rem', cursor: 'pointer', fontWeight: 500, fontSize: '0.875rem' }}>
+                      <i className="bi bi-chat-left-text" /> Live Chat (Coming Soon)
+                    </button>
+                  </div>
+                </div>
+              </AnimateOnScroll>
+
+              <AnimateOnScroll delay={0.5}>
+                <div style={{ background: 'linear-gradient(135deg, #eff6ff, #ede9fe)', borderRadius: '1rem', padding: '2rem', border: '1px solid #dbeafe' }}>
+                  <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1rem' }}><i className="bi bi-clock-history" style={{ marginRight: '0.5rem', color: '#4f46e5' }} />Response SLA</h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.85rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ color: '#4b5563' }}>Sales inquiries</span>
+                      <span style={{ fontWeight: 600, color: '#1e40af' }}>&lt; 2 hours</span>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ color: '#4b5563' }}>Technical support</span>
+                      <span style={{ fontWeight: 600, color: '#1e40af' }}>&lt; 4 hours</span>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ color: '#4b5563' }}>Enterprise</span>
+                      <span style={{ fontWeight: 600, color: '#1e40af' }}>&lt; 1 hour</span>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ color: '#4b5563' }}>Partnerships</span>
+                      <span style={{ fontWeight: 600, color: '#1e40af' }}>&lt; 24 hours</span>
+                    </div>
                   </div>
                 </div>
               </AnimateOnScroll>

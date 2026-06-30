@@ -4,27 +4,37 @@ import AnimateOnScroll from '@/components/common/AnimateOnScroll/AnimateOnScroll
 import styles from '../Home.module.scss';
 
 const screens = [
-  { id: 'dashboard', label: 'Dashboard', icon: 'bi-grid' },
-  { id: 'ai-chat', label: 'AI Chat', icon: 'bi-chat-dots' },
-  { id: 'cases', label: 'Cases', icon: 'bi-briefcase' },
-  { id: 'research', label: 'Research', icon: 'bi-search' },
-  { id: 'analytics', label: 'Analytics', icon: 'bi-bar-chart' },
+  { id: 'dashboard', label: 'Dashboard', icon: 'bi-grid', step: 1 },
+  { id: 'cases', label: 'Case', icon: 'bi-briefcase', step: 2 },
+  { id: 'research', label: 'Research', icon: 'bi-search', step: 3 },
+  { id: 'ai-chat', label: 'AI Chat', icon: 'bi-chat-dots', step: 4 },
+  { id: 'analytics', label: 'Draft', icon: 'bi-file-earmark-text', step: 5 },
 ];
 
 export default function ProductTour() {
   const [activeScreen, setActiveScreen] = useState('dashboard');
 
+  const currentIndex = screens.findIndex(s => s.id === activeScreen);
+  const goNext = () => {
+    const next = screens[(currentIndex + 1) % screens.length];
+    setActiveScreen(next.id);
+  };
+  const goPrev = () => {
+    const prev = screens[(currentIndex - 1 + screens.length) % screens.length];
+    setActiveScreen(prev.id);
+  };
+
   return (
-    <section className={`section ${styles.productTour}`} aria-label="Product Tour">
+    <section id="product-tour" className={`section ${styles.productTour}`} aria-label="Product Tour">
       <div className="container-custom">
         <AnimateOnScroll>
           <div className="section-header">
             <span className="section-badge">
-              <i className="bi bi-play-circle" aria-hidden="true" /> Product Tour
+              <i className="bi bi-play-circle" aria-hidden="true" /> Interactive Product Tour
             </span>
-            <h2 className="section-title">See LexPilot AI in Action</h2>
+            <h2 className="section-title">Experience the Complete Workflow</h2>
             <p className="section-subtitle">
-              Explore the platform through our interactive product tour.
+              Click through each step to see how LexPilot AI handles a legal task from start to finish.
             </p>
           </div>
         </AnimateOnScroll>
@@ -39,6 +49,7 @@ export default function ProductTour() {
                 className={`${styles.tourTab} ${activeScreen === screen.id ? styles.active : ''}`}
                 onClick={() => setActiveScreen(screen.id)}
               >
+                <span className={styles.tourTabStep}>{screen.step}</span>
                 <i className={`bi ${screen.icon}`} aria-hidden="true" />
                 {screen.label}
               </button>
@@ -60,6 +71,15 @@ export default function ProductTour() {
               {activeScreen === 'research' && <ResearchMockup />}
               {activeScreen === 'analytics' && <AnalyticsMockup />}
             </motion.div>
+            <div className={styles.tourNavigation}>
+              <button onClick={goPrev} className={styles.tourNavBtn} aria-label="Previous step">
+                <i className="bi bi-arrow-left" aria-hidden="true" />
+              </button>
+              <span className={styles.tourStepIndicator}>Step {currentIndex + 1} of {screens.length}</span>
+              <button onClick={goNext} className={styles.tourNavBtn} aria-label="Next step">
+                <i className="bi bi-arrow-right" aria-hidden="true" />
+              </button>
+            </div>
           </div>
         </AnimateOnScroll>
       </div>

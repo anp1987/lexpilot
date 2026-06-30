@@ -8,6 +8,95 @@
   @include container;
 }
 
+// Newsletter
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+  padding-bottom: $spacing-10;
+  margin-bottom: $spacing-10;
+  border-bottom: 1px solid rgba($white, 0.1);
+
+  @include respond-to(md) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.newsletterContent {
+  flex: 1;
+}
+
+.newsletterTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $white;
+  margin-bottom: $spacing-1;
+}
+
+.newsletterDesc {
+  font-size: $font-size-sm;
+  color: $gray-400;
+}
+
+.newsletterForm {
+  display: flex;
+  gap: $spacing-2;
+  flex-shrink: 0;
+
+  @include respond-below(sm) {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.newsletterInput {
+  padding: $spacing-3 $spacing-4;
+  font-size: $font-size-sm;
+  background: rgba($white, 0.05);
+  border: 1px solid rgba($white, 0.15);
+  border-radius: $radius-md;
+  color: $white;
+  min-width: 240px;
+  outline: none;
+  transition: border-color $transition-fast;
+
+  &::placeholder {
+    color: $gray-500;
+  }
+
+  &:focus {
+    border-color: $primary;
+  }
+}
+
+.newsletterBtn {
+  padding: $spacing-3 $spacing-6;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  background: $primary;
+  color: $white;
+  border: none;
+  border-radius: $radius-md;
+  cursor: pointer;
+  transition: background $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    background: $primary-dark;
+  }
+}
+
+.newsletterSuccess {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  font-size: $font-size-sm;
+  color: $success;
+  padding: $spacing-3;
+}
+
 .top {
   display: grid;
   grid-template-columns: 1fr;
@@ -73,7 +162,11 @@
   gap: $spacing-8;
 
   @include respond-to(md) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 

@@ -6,6 +6,8 @@ import AnimateOnScroll from '@/components/common/AnimateOnScroll/AnimateOnScroll
 
 const categories = ['All', 'AI & Legal Tech', 'Indian Law', 'Product Updates', 'Guides', 'Industry Insights'];
 
+const tags = ['Legal AI', 'Supreme Court', 'Contract Review', 'DPDP Act', 'NCLT', 'Compliance', 'Research', 'Drafting', 'Case Management', 'SEBI', 'Automation'];
+
 const blogPosts = [
   {
     slug: 'ai-transforming-indian-legal-research',
@@ -181,6 +183,44 @@ export default function Blog() {
               <p>No articles found matching your criteria.</p>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Tags */}
+      <section style={{ paddingBottom: '3rem' }}>
+        <div className="container-custom">
+          <AnimateOnScroll>
+            <div style={{ textAlign: 'center' }}>
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1rem', color: '#374151' }}>Popular Topics</h3>
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                {tags.map(tag => (
+                  <span key={tag} style={{ padding: '0.375rem 0.875rem', borderRadius: '999px', border: '1px solid #e5e7eb', fontSize: '0.8125rem', color: '#4b5563', cursor: 'pointer', transition: 'all 0.2s' }}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </AnimateOnScroll>
+        </div>
+      </section>
+
+      {/* Newsletter CTA */}
+      <section style={{ padding: '4rem 0', background: '#f9fafb', borderTop: '1px solid #e5e7eb' }}>
+        <div className="container-custom" style={{ textAlign: 'center', maxWidth: '600px' }}>
+          <AnimateOnScroll>
+            <i className="bi bi-envelope-paper" style={{ fontSize: '2.5rem', color: '#4f46e5', marginBottom: '1rem', display: 'block' }} />
+            <h2 style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '0.75rem' }}>Get Legal AI Insights Weekly</h2>
+            <p style={{ fontSize: '1rem', color: '#6b7280', marginBottom: '1.5rem', lineHeight: 1.7 }}>
+              Join 3,000+ Indian lawyers receiving weekly insights on AI in legal practice, Indian law updates, and platform tips.
+            </p>
+            <form onSubmit={(e) => e.preventDefault()} style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <input type="email" placeholder="your@email.com" required style={{ padding: '0.75rem 1rem', border: '1px solid #e5e7eb', borderRadius: '0.5rem', fontSize: '0.9375rem', minWidth: '250px' }} />
+              <button type="submit" style={{ padding: '0.75rem 1.5rem', background: '#4f46e5', color: 'white', border: 'none', borderRadius: '0.5rem', fontWeight: 600, cursor: 'pointer' }}>
+                Subscribe
+              </button>
+            </form>
+            <p style={{ fontSize: '0.75rem', color: '#9ca3af', marginTop: '0.75rem' }}>No spam. Unsubscribe anytime.</p>
+          </AnimateOnScroll>
         </div>
       </section>
     </>

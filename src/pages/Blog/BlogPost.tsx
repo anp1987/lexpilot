@@ -81,6 +81,23 @@ export default function BlogPost() {
               })}
             </div>
 
+            {/* Share Buttons */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid #e5e7eb' }}>
+              <span style={{ fontSize: '0.875rem', fontWeight: 600, color: '#374151' }}>Share:</span>
+              <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '36px', height: '36px', borderRadius: '50%', background: '#f3f4f6', color: '#374151', textDecoration: 'none', transition: 'background 0.2s' }} aria-label="Share on Twitter">
+                <i className="bi bi-twitter-x" />
+              </a>
+              <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '36px', height: '36px', borderRadius: '50%', background: '#f3f4f6', color: '#374151', textDecoration: 'none', transition: 'background 0.2s' }} aria-label="Share on LinkedIn">
+                <i className="bi bi-linkedin" />
+              </a>
+              <a href={`mailto:?subject=${encodeURIComponent(article.title)}&body=${encodeURIComponent(window.location.href)}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '36px', height: '36px', borderRadius: '50%', background: '#f3f4f6', color: '#374151', textDecoration: 'none', transition: 'background 0.2s' }} aria-label="Share via email">
+                <i className="bi bi-envelope" />
+              </a>
+              <button onClick={() => navigator.clipboard.writeText(window.location.href)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '36px', height: '36px', borderRadius: '50%', background: '#f3f4f6', color: '#374151', border: 'none', cursor: 'pointer', transition: 'background 0.2s' }} aria-label="Copy link">
+                <i className="bi bi-link-45deg" />
+              </button>
+            </div>
+
             {/* Footer CTA */}
             <div style={{ marginTop: '3rem', padding: '2rem', background: '#f5f3ff', borderRadius: '1rem', textAlign: 'center' }}>
               <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>Experience AI-Powered Legal Research</h3>
@@ -88,6 +105,28 @@ export default function BlogPost() {
               <Link to="/free-trial" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.75rem 1.5rem', background: '#4f46e5', color: 'white', borderRadius: '0.5rem', fontWeight: 600, textDecoration: 'none' }}>
                 Start Free Trial <i className="bi bi-arrow-right" />
               </Link>
+            </div>
+
+            {/* Related Articles */}
+            <div style={{ marginTop: '4rem' }}>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '1.5rem' }}>Related Articles</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
+                <Link to="/blog/dpdp-act-compliance-law-firms" style={{ textDecoration: 'none', color: 'inherit', padding: '1.25rem', border: '1px solid #e5e7eb', borderRadius: '0.75rem', transition: 'box-shadow 0.2s' }}>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#4f46e5', textTransform: 'uppercase' }}>Indian Law</span>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: 600, margin: '0.5rem 0', lineHeight: 1.4 }}>DPDP Act 2023: What Law Firms Must Know</h4>
+                  <span style={{ fontSize: '0.75rem', color: '#9ca3af' }}>12 min read</span>
+                </Link>
+                <Link to="/blog/contract-review-ai-benchmarks-2026" style={{ textDecoration: 'none', color: 'inherit', padding: '1.25rem', border: '1px solid #e5e7eb', borderRadius: '0.75rem', transition: 'box-shadow 0.2s' }}>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#4f46e5', textTransform: 'uppercase' }}>Product Updates</span>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: 600, margin: '0.5rem 0', lineHeight: 1.4 }}>Contract Review AI: 2026 Benchmarks</h4>
+                  <span style={{ fontSize: '0.75rem', color: '#9ca3af' }}>6 min read</span>
+                </Link>
+                <Link to="/blog/supreme-court-ai-citation-analysis" style={{ textDecoration: 'none', color: 'inherit', padding: '1.25rem', border: '1px solid #e5e7eb', borderRadius: '0.75rem', transition: 'box-shadow 0.2s' }}>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: '#4f46e5', textTransform: 'uppercase' }}>Industry Insights</span>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: 600, margin: '0.5rem 0', lineHeight: 1.4 }}>50 Years of Supreme Court Citations</h4>
+                  <span style={{ fontSize: '0.75rem', color: '#9ca3af' }}>10 min read</span>
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>

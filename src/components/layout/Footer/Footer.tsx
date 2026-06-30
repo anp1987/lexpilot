@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 
@@ -11,6 +12,8 @@ const footerLinks = [
       { label: 'Integrations', href: '/integrations' },
       { label: 'Security', href: '/security' },
       { label: 'Roadmap', href: '/roadmap' },
+      { label: 'Release Notes', href: '/release-notes' },
+      { label: 'Status', href: '/status' },
     ],
   },
   {
@@ -30,9 +33,9 @@ const footerLinks = [
       { label: 'Blog', href: '/blog' },
       { label: 'Customer Stories', href: '/customer-stories' },
       { label: 'FAQ', href: '/faq' },
-      { label: 'Release Notes', href: '/release-notes' },
       { label: 'Support', href: '/support' },
-      { label: 'Status', href: '/status' },
+      { label: 'Partners', href: '/partners' },
+      { label: 'Trust Center', href: '/security' },
     ],
   },
   {
@@ -40,18 +43,65 @@ const footerLinks = [
     links: [
       { label: 'About', href: '/about' },
       { label: 'Careers', href: '/careers' },
-      { label: 'Partners', href: '/partners' },
       { label: 'Contact Sales', href: '/contact-sales' },
       { label: 'Schedule Demo', href: '/schedule-demo' },
       { label: 'Free Trial', href: '/free-trial' },
     ],
   },
+  {
+    title: 'Legal',
+    links: [
+      { label: 'Privacy Policy', href: '/privacy' },
+      { label: 'Terms of Service', href: '/terms' },
+      { label: 'Cookie Policy', href: '/cookie-policy' },
+      { label: 'Accessibility', href: '/accessibility' },
+    ],
+  },
 ];
 
 export default function Footer() {
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setSubscribed(true);
+      setEmail('');
+    }
+  };
+
   return (
     <footer className={styles.footer} role="contentinfo">
       <div className={styles.container}>
+        {/* Newsletter */}
+        <div className={styles.newsletter}>
+          <div className={styles.newsletterContent}>
+            <h3 className={styles.newsletterTitle}>Stay updated on Indian Legal AI</h3>
+            <p className={styles.newsletterDesc}>Get weekly insights on legal tech, AI in law, and product updates. No spam.</p>
+          </div>
+          <form className={styles.newsletterForm} onSubmit={handleSubscribe}>
+            {subscribed ? (
+              <div className={styles.newsletterSuccess}>
+                <i className="bi bi-check-circle-fill" aria-hidden="true" /> Thanks! You're subscribed.
+              </div>
+            ) : (
+              <>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  required
+                  className={styles.newsletterInput}
+                  aria-label="Email for newsletter"
+                />
+                <button type="submit" className={styles.newsletterBtn}>Subscribe</button>
+              </>
+            )}
+          </form>
+        </div>
+
         <div className={styles.top}>
           <div className={styles.brand}>
             <Link to="/" className={styles.logo} aria-label="LexPilot AI Home">
@@ -69,7 +119,7 @@ export default function Footer() {
               <span>LexPilot AI</span>
             </Link>
             <p className={styles.tagline}>
-              The AI Assistant Built for Indian Law Firms. Empowering lawyers with AI-powered legal research, drafting, and case management.
+              The AI Assistant Built for Indian Law Firms. Reduce legal research by 80% and generate court-ready drafts in minutes.
             </p>
             <div className={styles.social}>
               <a href="https://twitter.com/lexpilotai" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
@@ -93,7 +143,7 @@ export default function Footer() {
                 <h3 className={styles.linkTitle}>{section.title}</h3>
                 <ul className={styles.linkList}>
                   {section.links.map((link) => (
-                    <li key={link.href}>
+                    <li key={link.href + link.label}>
                       <Link to={link.href}>{link.label}</Link>
                     </li>
                   ))}
@@ -105,13 +155,7 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <div className={styles.legal}>
-            <span>&copy; {new Date().getFullYear()} LexPilot AI. All rights reserved.</span>
-            <div className={styles.legalLinks}>
-              <Link to="/privacy">Privacy Policy</Link>
-              <Link to="/terms">Terms of Service</Link>
-              <Link to="/cookie-policy">Cookie Policy</Link>
-              <Link to="/accessibility">Accessibility</Link>
-            </div>
+            <span>&copy; {new Date().getFullYear()} LexPilot AI Technologies Pvt. Ltd. All rights reserved.</span>
           </div>
           <div className={styles.badges}>
             <span className={styles.badge}>
@@ -124,7 +168,11 @@ export default function Footer() {
             </span>
             <span className={styles.badge}>
               <i className="bi bi-patch-check" aria-hidden="true" />
-              GDPR
+              DPDP
+            </span>
+            <span className={styles.badge}>
+              <i className="bi bi-geo-alt" aria-hidden="true" />
+              India Data Residency
             </span>
           </div>
         </div>

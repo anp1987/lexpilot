@@ -1,0 +1,181 @@
+.footer {
+  background: $gray-900;
+  color: $gray-300;
+  padding: $spacing-16 0 $spacing-8;
+}
+
+.container {
+  @include container;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-12;
+  padding-bottom: $spacing-12;
+  border-bottom: 1px solid rgba($white, 0.1);
+
+  @include respond-to(lg) {
+    grid-template-columns: 1.2fr 2fr;
+  }
+}
+
+.brand {
+  max-width: 320px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  text-decoration: none;
+  margin-bottom: $spacing-4;
+
+  span {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $white;
+  }
+}
+
+.tagline {
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+  color: $gray-400;
+  margin-bottom: $spacing-6;
+}
+
+.social {
+  display: flex;
+  gap: $spacing-3;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-md;
+    background: rgba($white, 0.05);
+    color: $gray-400;
+    transition: all $transition-fast;
+
+    &:hover {
+      background: rgba($white, 0.1);
+      color: $white;
+    }
+  }
+}
+
+.linksGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-8;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.linkSection {
+  h3 {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $white;
+    margin-bottom: $spacing-4;
+  }
+}
+
+.linkTitle {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $white;
+  margin-bottom: $spacing-4;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+
+  a {
+    font-size: $font-size-sm;
+    color: $gray-400;
+    text-decoration: none;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+.bottom {
+  padding-top: $spacing-8;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+
+  @include respond-to(md) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.legal {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+
+  @include respond-to(md) {
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-6;
+  }
+
+  span {
+    font-size: $font-size-sm;
+    color: $gray-500;
+  }
+}
+
+.legalLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-4;
+
+  a {
+    font-size: $font-size-sm;
+    color: $gray-500;
+    text-decoration: none;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+.badges {
+  display: flex;
+  gap: $spacing-3;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-1;
+  font-size: $font-size-xs;
+  color: $gray-400;
+  padding: $spacing-1 $spacing-3;
+  border: 1px solid rgba($white, 0.1);
+  border-radius: $radius-full;
+
+  i {
+    font-size: $font-size-sm;
+  }
+}

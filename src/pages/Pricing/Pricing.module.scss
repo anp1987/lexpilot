@@ -1,0 +1,103 @@
+.hero {
+  padding: calc($navbar-height + $spacing-16) 0 $spacing-12;
+  text-align: center;
+}
+
+.heroTitle {
+  @include heading-xl;
+  margin-bottom: $spacing-4;
+}
+
+.heroSubtitle {
+  @include body-lg;
+  max-width: 560px;
+  margin: 0 auto $spacing-8;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-3;
+  font-size: $font-size-sm;
+  color: $gray-500;
+}
+
+.toggleActive { color: $gray-900; font-weight: $font-weight-medium; }
+.toggleSwitch { width: 48px; height: 26px; border-radius: $radius-full; background: $primary; border: none; cursor: pointer; position: relative; padding: 3px; }
+.toggleDot { display: block; width: 20px; height: 20px; border-radius: 50%; background: $white; box-shadow: $shadow-sm; transition: transform $transition-base; &.toggleRight { transform: translateX(22px); } }
+.saveBadge { font-size: $font-size-xs; color: $success; font-weight: $font-weight-semibold; background: $success-light; padding: 2px $spacing-2; border-radius: $radius-full; }
+
+.plans { padding: $spacing-8 0 $spacing-16; }
+
+.plansGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-6;
+  @include respond-to(md) { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to(xl) { grid-template-columns: repeat(4, 1fr); }
+}
+
+.planCard {
+  @include card-base;
+  padding: $spacing-6;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  &.popular { border-color: $primary; box-shadow: $shadow-glow; }
+}
+
+.popularBadge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: $gradient-primary; color: $white; font-size: $font-size-xs; font-weight: $font-weight-semibold; padding: $spacing-1 $spacing-3; border-radius: $radius-full; white-space: nowrap; }
+.planName { font-size: $font-size-xl; font-weight: $font-weight-bold; margin-bottom: $spacing-1; }
+.planDesc { font-size: $font-size-sm; color: $gray-500; margin-bottom: $spacing-4; }
+.planPrice { display: flex; align-items: baseline; margin-bottom: $spacing-1; }
+.priceCurrency { font-size: $font-size-xl; font-weight: $font-weight-bold; }
+.priceAmount { font-size: $font-size-4xl; font-weight: $font-weight-bold; line-height: 1; }
+.pricePeriod { font-size: $font-size-sm; color: $gray-500; margin-left: $spacing-1; }
+.priceCustom { font-size: $font-size-3xl; font-weight: $font-weight-bold; }
+.priceBilled { font-size: $font-size-xs; color: $gray-500; margin-bottom: $spacing-4; }
+
+.planCta {
+  @include btn-secondary;
+  width: 100%;
+  justify-content: center;
+  margin: $spacing-4 0 $spacing-6;
+  &.planCtaPrimary { @include btn-primary; width: 100%; justify-content: center; margin: $spacing-4 0 $spacing-6; }
+}
+
+.planFeatures {
+  list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: $spacing-3; flex: 1;
+  li { display: flex; align-items: center; gap: $spacing-2; font-size: $font-size-sm; color: $gray-700; i { color: $primary; } &.excluded { color: $gray-400; i { color: $gray-300; } } }
+}
+
+.comparisonTable {
+  overflow-x: auto;
+  table { width: 100%; border-collapse: collapse; min-width: 700px;
+    th, td { padding: $spacing-3 $spacing-4; text-align: left; border-bottom: 1px solid $gray-100; font-size: $font-size-sm; }
+    th { background: $gray-50; font-weight: $font-weight-semibold; color: $gray-700; position: sticky; top: 0; }
+    td:first-child { font-weight: $font-weight-medium; }
+  }
+}
+
+.categoryRow { td { background: $gray-50; font-weight: $font-weight-bold !important; color: $gray-900; font-size: $font-size-sm; padding-top: $spacing-4 !important; } }
+.checkCell { color: $primary; i { font-size: $font-size-lg; } }
+.dashCell { color: $gray-300; }
+
+.faqGrid {
+  display: grid; grid-template-columns: 1fr; gap: $spacing-6; max-width: 800px; margin: 0 auto;
+  @include respond-to(md) { grid-template-columns: repeat(2, 1fr); }
+}
+
+.faqItem { h4 { font-size: $font-size-base; margin-bottom: $spacing-2; } p { font-size: $font-size-sm; color: $gray-600; line-height: $line-height-relaxed; } }
+
+.enterprise { padding: $spacing-16 0; }
+
+.enterpriseCta {
+  background: $gradient-hero; border-radius: $radius-2xl; padding: $spacing-12 $spacing-8; text-align: center; color: $white;
+  h2 { font-size: $font-size-3xl; margin-bottom: $spacing-3; color: $white; }
+  p { font-size: $font-size-lg; color: rgba($white, 0.8); margin-bottom: $spacing-6; max-width: 600px; margin-left: auto; margin-right: auto; }
+}
+
+.enterpriseActions { display: flex; gap: $spacing-3; justify-content: center; }
+.enterprisePrimary { @include btn-base; background: $white; color: $gray-900; padding: $spacing-3 $spacing-6; &:hover { transform: translateY(-2px); box-shadow: $shadow-lg; } }
+.enterpriseSecondary { @include btn-base; background: transparent; color: $white; border: 1px solid rgba($white, 0.3); padding: $spacing-3 $spacing-6; &:hover { background: rgba($white, 0.1); } }

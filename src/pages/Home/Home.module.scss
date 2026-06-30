@@ -1,0 +1,1653 @@
+// Home Page Styles
+
+// Announcement Bar
+.announcement {
+  background: $gradient-primary;
+  padding: $spacing-2 0;
+  margin-top: $navbar-height;
+}
+
+.announcementInner {
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-3;
+  flex-wrap: wrap;
+}
+
+.announcementBadge {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  background: rgba($white, 0.2);
+  color: $white;
+  padding: 2px $spacing-2;
+  border-radius: $radius-full;
+}
+
+.announcementText {
+  font-size: $font-size-sm;
+  color: rgba($white, 0.9);
+}
+
+.announcementLink {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: $spacing-1;
+
+  &:hover {
+    text-decoration: underline;
+    color: $white;
+  }
+}
+
+// Hero
+.hero {
+  position: relative;
+  padding: $spacing-16 0 $spacing-20;
+  overflow: hidden;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+
+  @include respond-to(md) {
+    padding: $spacing-20 0 $spacing-24;
+  }
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.heroGlow {
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba($primary, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.heroGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba($gray-200, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba($gray-200, 0.3) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+}
+
+.heroContainer {
+  @include container;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-12;
+
+  @include respond-to(lg) {
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-16;
+  }
+}
+
+.heroContent {
+  flex: 1;
+  text-align: center;
+
+  @include respond-to(lg) {
+    text-align: left;
+    max-width: 560px;
+  }
+}
+
+.heroTitle {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+  color: $gray-900;
+  margin-bottom: $spacing-6;
+
+  @include respond-to(md) {
+    font-size: $font-size-5xl;
+  }
+
+  @include respond-to(lg) {
+    font-size: $font-size-6xl;
+  }
+}
+
+.heroSubtitle {
+  font-size: $font-size-lg;
+  line-height: $line-height-relaxed;
+  color: $gray-600;
+  margin-bottom: $spacing-8;
+
+  @include respond-to(md) {
+    font-size: $font-size-xl;
+  }
+}
+
+.heroActions {
+  display: flex;
+  gap: $spacing-3;
+  justify-content: center;
+  margin-bottom: $spacing-6;
+
+  @include respond-to(lg) {
+    justify-content: flex-start;
+  }
+}
+
+.heroPrimary {
+  @include btn-primary;
+  padding: $spacing-4 $spacing-8;
+  font-size: $font-size-base;
+}
+
+.heroSecondary {
+  @include btn-secondary;
+  padding: $spacing-4 $spacing-8;
+  font-size: $font-size-base;
+}
+
+.heroMeta {
+  display: flex;
+  gap: $spacing-4;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: $font-size-sm;
+  color: $gray-500;
+
+  @include respond-to(lg) {
+    justify-content: flex-start;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: $spacing-1;
+
+    i {
+      color: $success;
+      font-size: $font-size-xs;
+    }
+  }
+}
+
+.heroVisual {
+  flex: 1.2;
+  display: none;
+
+  @include respond-to(lg) {
+    display: block;
+  }
+}
+
+// Dashboard Mockup
+.heroMockup {
+  background: $white;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-2xl;
+  border: 1px solid $gray-200;
+  overflow: hidden;
+}
+
+.mockupHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  padding: $spacing-3 $spacing-4;
+  background: $gray-50;
+  border-bottom: 1px solid $gray-200;
+}
+
+.mockupDots {
+  display: flex;
+  gap: 6px;
+
+  span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: $gray-300;
+
+    &:first-child { background: #ff5f56; }
+    &:nth-child(2) { background: #ffbd2e; }
+    &:last-child { background: #27c93f; }
+  }
+}
+
+.mockupTitle {
+  font-size: $font-size-xs;
+  color: $gray-500;
+}
+
+.mockupBody {
+  display: flex;
+  min-height: 320px;
+}
+
+.mockupSidebar {
+  width: 180px;
+  background: $gray-50;
+  border-right: 1px solid $gray-100;
+  padding: $spacing-3;
+}
+
+.mockupNav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mockupNavItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  padding: $spacing-2 $spacing-3;
+  font-size: $font-size-xs;
+  color: $gray-600;
+  border-radius: $radius-md;
+
+  &.active {
+    background: $primary-50;
+    color: $primary;
+    font-weight: $font-weight-medium;
+  }
+}
+
+.mockupContent {
+  flex: 1;
+  padding: $spacing-4;
+}
+
+.mockupWelcome {
+  margin-bottom: $spacing-4;
+
+  h3 {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    margin-bottom: 2px;
+  }
+
+  p {
+    font-size: $font-size-xs;
+    color: $gray-500;
+  }
+}
+
+.mockupCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-3;
+  margin-bottom: $spacing-4;
+}
+
+.mockupStatCard {
+  background: $gray-50;
+  border: 1px solid $gray-100;
+  border-radius: $radius-md;
+  padding: $spacing-3;
+}
+
+.statLabel {
+  font-size: 10px;
+  color: $gray-500;
+  display: block;
+}
+
+.statValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $gray-900;
+}
+
+.mockupActivity {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+}
+
+.activityItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  font-size: 11px;
+  color: $gray-600;
+  padding: $spacing-2;
+  background: $gray-50;
+  border-radius: $radius-sm;
+}
+
+.activityDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: $primary;
+  flex-shrink: 0;
+}
+
+// Trusted By
+.trustedBy {
+  padding: $spacing-12 0;
+  border-bottom: 1px solid $gray-100;
+}
+
+.trustedByLabel {
+  text-align: center;
+  font-size: $font-size-sm;
+  color: $gray-500;
+  margin-bottom: $spacing-6;
+  font-weight: $font-weight-medium;
+}
+
+.trustedByLogos {
+  @include container;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $spacing-6;
+  align-items: center;
+}
+
+.trustedByLogo {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $gray-400;
+  padding: $spacing-2 $spacing-4;
+  white-space: nowrap;
+}
+
+// Statistics
+.statistics {
+  background: $white;
+}
+
+.statsGrid {
+  @include container;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-8;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.statItem {
+  text-align: center;
+
+  i {
+    font-size: $font-size-2xl;
+    color: $primary;
+    margin-bottom: $spacing-2;
+  }
+}
+
+.statNumber {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  color: $gray-900;
+  line-height: 1;
+  margin-bottom: $spacing-1;
+
+  @include respond-to(md) {
+    font-size: $font-size-5xl;
+  }
+}
+
+// Product Overview
+.productGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-6;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.productCard {
+  @include card-base;
+  padding: $spacing-8;
+
+  h3 {
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-3;
+  }
+
+  p {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    line-height: $line-height-relaxed;
+    margin-bottom: $spacing-4;
+  }
+
+  a {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $primary;
+    display: flex;
+    align-items: center;
+    gap: $spacing-1;
+    text-decoration: none;
+
+    &:hover {
+      gap: $spacing-2;
+    }
+  }
+}
+
+.productCardIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-lg;
+  background: $primary-50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $spacing-4;
+
+  i {
+    font-size: $font-size-xl;
+    color: $primary;
+  }
+}
+
+// Features
+.featuresGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-4;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.featureCard {
+  display: block;
+  padding: $spacing-6;
+  background: $white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-xl;
+  text-decoration: none;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: $primary-200;
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+
+    .featureLink {
+      color: $primary;
+      gap: $spacing-2;
+    }
+  }
+}
+
+.featureIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  background: $gradient-card;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $spacing-4;
+
+  i {
+    font-size: $font-size-lg;
+    color: $primary;
+  }
+}
+
+.featureTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $gray-900;
+  margin-bottom: $spacing-2;
+}
+
+.featureDesc {
+  font-size: $font-size-sm;
+  color: $gray-600;
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-4;
+}
+
+.featureLink {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $gray-500;
+  display: flex;
+  align-items: center;
+  gap: $spacing-1;
+  transition: all $transition-fast;
+}
+
+// AI Agents
+.aiAgentsLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-12;
+  align-items: center;
+
+  @include respond-to(lg) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.aiAgentsContent {
+  .section-title {
+    text-align: left;
+  }
+}
+
+.aiAgentsDesc {
+  font-size: $font-size-lg;
+  color: $gray-600;
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-6;
+}
+
+.aiAgentsLink {
+  @include btn-primary;
+  display: inline-flex;
+}
+
+.aiAgentsCards {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+}
+
+.agentCard {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-4;
+  padding: $spacing-5;
+  background: $white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-xl;
+  transition: all $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    border-color: $gray-300;
+  }
+}
+
+.agentIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  i {
+    font-size: $font-size-lg;
+  }
+}
+
+.agentName {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $gray-900;
+  margin-bottom: 2px;
+}
+
+.agentDesc {
+  font-size: $font-size-sm;
+  color: $gray-600;
+  line-height: $line-height-normal;
+}
+
+// Solutions
+.solutionsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-4;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.solutionCard {
+  @include card-base;
+  padding: $spacing-6;
+
+  h3 {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-2;
+  }
+
+  p {
+    font-size: $font-size-sm;
+    color: $gray-600;
+  }
+}
+
+.solutionIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-lg;
+  background: $purple-50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $spacing-4;
+
+  i {
+    font-size: $font-size-xl;
+    color: $purple;
+  }
+}
+
+// Product Tour
+.tourTabs {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-2;
+  margin-bottom: $spacing-8;
+  flex-wrap: wrap;
+}
+
+.tourTab {
+  @include btn-base;
+  background: $white;
+  color: $gray-600;
+  border: 1px solid $gray-200;
+  font-size: $font-size-sm;
+  padding: $spacing-2 $spacing-4;
+
+  &.active {
+    background: $primary;
+    color: $white;
+    border-color: $primary;
+  }
+
+  &:hover:not(.active) {
+    background: $gray-50;
+    border-color: $gray-300;
+  }
+}
+
+.tourScreen {
+  background: $white;
+  border: 1px solid $gray-200;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  box-shadow: $shadow-lg;
+}
+
+.tourContent {
+  padding: $spacing-6;
+  min-height: 400px;
+}
+
+.mockupScreen {
+  padding: $spacing-4;
+}
+
+.mockupGrid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-4;
+  margin-bottom: $spacing-6;
+
+  @include respond-below(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.miniCard {
+  background: $gray-50;
+  border: 1px solid $gray-100;
+  border-radius: $radius-lg;
+  padding: $spacing-4;
+}
+
+.miniCardHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  font-size: $font-size-sm;
+  color: $gray-600;
+  margin-bottom: $spacing-2;
+
+  i { color: $primary; }
+}
+
+.miniCardValue {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: $gray-900;
+}
+
+.miniCardTrend {
+  font-size: $font-size-xs;
+  color: $success;
+  margin-top: $spacing-1;
+
+  i { font-size: 10px; }
+}
+
+.mockupTimeline {
+  background: $gray-50;
+  border-radius: $radius-lg;
+  padding: $spacing-4;
+
+  h4 {
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-3;
+  }
+}
+
+.timelineItem {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-3;
+  padding: $spacing-2 0;
+  font-size: $font-size-sm;
+  color: $gray-600;
+}
+
+.timeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+// Chat Mockup
+.chatInterface {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+.chatMessages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+  padding: $spacing-4;
+}
+
+.chatUser {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.chatBubbleUser {
+  background: $primary;
+  color: $white;
+  padding: $spacing-3 $spacing-4;
+  border-radius: $radius-lg $radius-lg 0 $radius-lg;
+  max-width: 70%;
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+}
+
+.chatAI {
+  display: flex;
+}
+
+.chatBubbleAI {
+  background: $gray-50;
+  border: 1px solid $gray-100;
+  padding: $spacing-4;
+  border-radius: $radius-lg $radius-lg $radius-lg 0;
+  max-width: 80%;
+  font-size: $font-size-sm;
+  line-height: $line-height-relaxed;
+
+  p {
+    margin-bottom: $spacing-2;
+    &:last-of-type { margin-bottom: $spacing-3; }
+  }
+}
+
+.chatCitations {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  font-size: $font-size-xs;
+  color: $primary;
+  padding-top: $spacing-2;
+  border-top: 1px solid $gray-200;
+}
+
+.chatInput {
+  display: flex;
+  gap: $spacing-2;
+  padding: $spacing-3 $spacing-4;
+  border-top: 1px solid $gray-200;
+
+  input {
+    flex: 1;
+    border: 1px solid $gray-200;
+    border-radius: $radius-md;
+    padding: $spacing-2 $spacing-3;
+    font-size: $font-size-sm;
+  }
+
+  button {
+    @include btn-primary;
+    padding: $spacing-2 $spacing-3;
+  }
+}
+
+// Cases Mockup
+.caseList {
+  padding: $spacing-4;
+}
+
+.caseHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-4;
+
+  h4 {
+    font-size: $font-size-lg;
+  }
+}
+
+.caseFilters {
+  display: flex;
+  gap: $spacing-2;
+  font-size: $font-size-sm;
+  color: $gray-500;
+
+  span {
+    padding: $spacing-1 $spacing-3;
+    border-radius: $radius-full;
+    cursor: pointer;
+  }
+}
+
+.filterActive {
+  background: $primary-50;
+  color: $primary;
+  font-weight: $font-weight-medium;
+}
+
+.caseTable {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+}
+
+.caseRow {
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+  padding: $spacing-4;
+  border: 1px solid $gray-100;
+  border-radius: $radius-lg;
+
+  @include respond-below(md) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.caseBadge {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  padding: 2px $spacing-2;
+  border-radius: $radius-sm;
+  white-space: nowrap;
+}
+
+.caseInfo {
+  flex: 1;
+
+  strong {
+    display: block;
+    font-size: $font-size-sm;
+    margin-bottom: 2px;
+  }
+
+  span {
+    font-size: $font-size-xs;
+    color: $gray-500;
+  }
+}
+
+.caseDate {
+  font-size: $font-size-sm;
+  color: $gray-600;
+  white-space: nowrap;
+}
+
+.caseStatus {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $success;
+}
+
+// Research Mockup
+.researchInterface {
+  padding: $spacing-4;
+}
+
+.researchSearch {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  padding: $spacing-3 $spacing-4;
+  background: $gray-50;
+  border: 1px solid $gray-200;
+  border-radius: $radius-lg;
+  margin-bottom: $spacing-6;
+  font-size: $font-size-sm;
+  color: $gray-700;
+
+  i { color: $gray-400; }
+}
+
+.researchResults {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+}
+
+.researchResult {
+  padding: $spacing-4;
+  border: 1px solid $gray-100;
+  border-radius: $radius-lg;
+
+  h5 {
+    font-size: $font-size-base;
+    margin-bottom: $spacing-2;
+  }
+
+  p {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    line-height: $line-height-relaxed;
+    margin-bottom: $spacing-3;
+  }
+}
+
+.researchResultMeta {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  margin-bottom: $spacing-2;
+  font-size: $font-size-xs;
+  color: $gray-500;
+}
+
+.courtBadge {
+  background: $primary-50;
+  color: $primary;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  padding: 2px $spacing-2;
+  border-radius: $radius-sm;
+}
+
+.relevanceBar {
+  height: 4px;
+  background: $gray-100;
+  border-radius: $radius-full;
+  overflow: hidden;
+  margin-bottom: $spacing-1;
+
+  div {
+    height: 100%;
+    background: $gradient-primary;
+    border-radius: $radius-full;
+  }
+}
+
+.relevanceScore {
+  font-size: $font-size-xs;
+  color: $primary;
+  font-weight: $font-weight-medium;
+}
+
+// Analytics Mockup
+.analyticsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-4;
+
+  @include respond-below(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chartCard {
+  background: $gray-50;
+  border: 1px solid $gray-100;
+  border-radius: $radius-lg;
+  padding: $spacing-4;
+
+  h5 {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-4;
+  }
+}
+
+.barChart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: $spacing-3;
+  height: 160px;
+  padding-bottom: $spacing-4;
+}
+
+.bar {
+  width: 40px;
+  border-radius: $radius-sm $radius-sm 0 0;
+  position: relative;
+  transition: opacity $transition-fast;
+
+  span {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: $gray-500;
+    white-space: nowrap;
+  }
+
+  &:hover { opacity: 0.8; }
+}
+
+.lineChart {
+  height: 120px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.chartLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $gray-700;
+  margin-top: $spacing-2;
+}
+
+.donutChart {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.donutCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $gray-900;
+  line-height: 1.2;
+
+  small {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-normal;
+    color: $gray-500;
+  }
+}
+
+// Benefits
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-6;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.benefitCard {
+  text-align: center;
+  padding: $spacing-8;
+
+  h3 {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-2;
+  }
+
+  p {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    line-height: $line-height-relaxed;
+  }
+}
+
+.benefitIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: $radius-xl;
+  background: $gradient-card;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto $spacing-4;
+
+  i {
+    font-size: $font-size-2xl;
+    color: $primary;
+  }
+}
+
+// Why Choose
+.whyGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-6;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.whyCard {
+  @include card-base;
+  padding: $spacing-6;
+
+  i {
+    font-size: $font-size-2xl;
+    color: $primary;
+    margin-bottom: $spacing-4;
+    display: block;
+  }
+
+  h3 {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-2;
+  }
+
+  p {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    line-height: $line-height-relaxed;
+  }
+}
+
+// Security
+.securityLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-12;
+  align-items: center;
+
+  @include respond-to(lg) {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+.securityDesc {
+  font-size: $font-size-lg;
+  color: $gray-600;
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-6;
+}
+
+.securityFeatures {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-3;
+  margin-bottom: $spacing-6;
+}
+
+.securityFeature {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  font-size: $font-size-sm;
+  color: $gray-700;
+
+  i {
+    color: $success;
+  }
+}
+
+.securityLink {
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: $primary;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-2;
+  text-decoration: none;
+
+  &:hover {
+    gap: $spacing-3;
+  }
+}
+
+.securityVisual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-6;
+}
+
+.securityShield {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: $gradient-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 60px rgba($primary, 0.2);
+
+  i {
+    font-size: 48px;
+    color: $white;
+  }
+}
+
+.securityBadges {
+  display: flex;
+  gap: $spacing-3;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.certBadge {
+  padding: $spacing-2 $spacing-4;
+  border: 2px solid $gray-200;
+  border-radius: $radius-lg;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $gray-700;
+}
+
+// Testimonials
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-6;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.testimonialCard {
+  @include card-base;
+  padding: $spacing-6;
+}
+
+.testimonialStars {
+  display: flex;
+  gap: 2px;
+  margin-bottom: $spacing-4;
+
+  i {
+    color: #f59e0b;
+    font-size: $font-size-sm;
+  }
+}
+
+.testimonialQuote {
+  font-size: $font-size-base;
+  color: $gray-700;
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-6;
+  font-style: normal;
+}
+
+.testimonialAuthor {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+
+  strong {
+    display: block;
+    font-size: $font-size-sm;
+    color: $gray-900;
+  }
+
+  span {
+    font-size: $font-size-xs;
+    color: $gray-500;
+  }
+}
+
+.testimonialAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-full;
+  background: $gradient-primary;
+  color: $white;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Pricing Preview
+.pricingToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-3;
+  margin-bottom: $spacing-10;
+  font-size: $font-size-sm;
+  color: $gray-500;
+}
+
+.toggleActive {
+  color: $gray-900;
+  font-weight: $font-weight-medium;
+}
+
+.toggleSwitch {
+  width: 48px;
+  height: 26px;
+  border-radius: $radius-full;
+  background: $gray-200;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  padding: 3px;
+}
+
+.toggleDot {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: $white;
+  box-shadow: $shadow-sm;
+  transition: transform $transition-base;
+
+  &.toggleRight {
+    transform: translateX(22px);
+  }
+}
+
+.saveBadge {
+  font-size: $font-size-xs;
+  color: $success;
+  font-weight: $font-weight-semibold;
+  background: $success-light;
+  padding: 2px $spacing-2;
+  border-radius: $radius-full;
+  margin-left: $spacing-1;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-6;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(xl) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.pricingCard {
+  @include card-base;
+  padding: $spacing-6;
+  position: relative;
+
+  &.popular {
+    border-color: $primary;
+    box-shadow: $shadow-glow;
+  }
+}
+
+.popularBadge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: $gradient-primary;
+  color: $white;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  padding: $spacing-1 $spacing-3;
+  border-radius: $radius-full;
+  white-space: nowrap;
+}
+
+.planName {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-1;
+}
+
+.planDesc {
+  font-size: $font-size-sm;
+  color: $gray-500;
+  margin-bottom: $spacing-4;
+}
+
+.planPrice {
+  margin-bottom: $spacing-6;
+  display: flex;
+  align-items: baseline;
+}
+
+.priceCurrency {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $gray-900;
+}
+
+.priceAmount {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  color: $gray-900;
+  line-height: 1;
+}
+
+.pricePeriod {
+  font-size: $font-size-sm;
+  color: $gray-500;
+  margin-left: $spacing-1;
+}
+
+.priceCustom {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: $gray-900;
+}
+
+.planFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 $spacing-6;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    font-size: $font-size-sm;
+    color: $gray-700;
+
+    i {
+      color: $primary;
+      font-size: $font-size-base;
+    }
+  }
+}
+
+.planCta {
+  @include btn-secondary;
+  width: 100%;
+  justify-content: center;
+
+  &.planCtaPrimary {
+    @include btn-primary;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.pricingFooter {
+  text-align: center;
+  margin-top: $spacing-8;
+
+  a {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $primary;
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-2;
+    text-decoration: none;
+  }
+}
+
+// FAQ
+.faqContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+// CTA
+.cta {
+  padding: $spacing-20 0;
+}
+
+.ctaInner {
+  position: relative;
+  background: $gradient-hero;
+  border-radius: $radius-2xl;
+  padding: $spacing-16 $spacing-8;
+  text-align: center;
+  overflow: hidden;
+}
+
+.ctaGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba($primary, 0.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.ctaTitle {
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: $white;
+  margin-bottom: $spacing-4;
+  position: relative;
+
+  @include respond-to(md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+.ctaSubtitle {
+  font-size: $font-size-lg;
+  color: rgba($white, 0.8);
+  margin-bottom: $spacing-8;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.ctaActions {
+  display: flex;
+  gap: $spacing-3;
+  justify-content: center;
+  margin-bottom: $spacing-4;
+  position: relative;
+}
+
+.ctaPrimary {
+  @include btn-base;
+  background: $white;
+  color: $gray-900;
+  padding: $spacing-4 $spacing-8;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+.ctaSecondary {
+  @include btn-base;
+  background: transparent;
+  color: $white;
+  border: 1px solid rgba($white, 0.3);
+  padding: $spacing-4 $spacing-8;
+
+  &:hover {
+    background: rgba($white, 0.1);
+    border-color: rgba($white, 0.5);
+  }
+}
+
+.ctaMeta {
+  font-size: $font-size-sm;
+  color: rgba($white, 0.6);
+  position: relative;
+}

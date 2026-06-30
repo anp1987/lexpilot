@@ -1,0 +1,138 @@
+.demoPage {
+  padding: calc($navbar-height + $spacing-12) 0 $spacing-16;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-8;
+  @include respond-to(lg) { grid-template-columns: 360px 1fr; }
+}
+
+.sidebar {
+  @include respond-below(lg) { text-align: center; }
+}
+
+.title { @include heading-md; margin-bottom: $spacing-3; }
+.subtitle { font-size: $font-size-base; color: $gray-600; line-height: $line-height-relaxed; margin-bottom: $spacing-8; }
+
+.stepList {
+  display: flex; flex-direction: column; gap: $spacing-2; margin-bottom: $spacing-8;
+  @include respond-below(lg) { display: none; }
+}
+
+.stepItem {
+  display: flex; align-items: center; gap: $spacing-3; padding: $spacing-2; border-radius: $radius-md; font-size: $font-size-sm; color: $gray-500;
+  &.active { color: $primary; font-weight: $font-weight-medium; background: $primary-50; }
+  &.completed { color: $success; }
+}
+
+.stepCircle {
+  width: 28px; height: 28px; border-radius: 50%; border: 2px solid $gray-300; display: flex; align-items: center; justify-content: center; font-size: $font-size-xs; font-weight: $font-weight-semibold; flex-shrink: 0;
+  .active & { border-color: $primary; background: $primary; color: $white; }
+  .completed & { border-color: $success; background: $success; color: $white; }
+}
+
+.sidebarInfo {
+  background: $gray-50; border-radius: $radius-xl; padding: $spacing-5;
+  @include respond-below(lg) { display: none; }
+  h4 { font-size: $font-size-sm; font-weight: $font-weight-semibold; margin-bottom: $spacing-3; }
+  ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: $spacing-2; }
+  li { display: flex; align-items: center; gap: $spacing-2; font-size: $font-size-sm; color: $gray-600; i { color: $success; } }
+}
+
+.formArea {
+  background: $white; border: 1px solid $gray-200; border-radius: $radius-xl; padding: $spacing-8; box-shadow: $shadow-card;
+}
+
+.stepContent {
+  h2 { font-size: $font-size-2xl; font-weight: $font-weight-bold; margin-bottom: $spacing-2; }
+  > p { font-size: $font-size-base; color: $gray-600; margin-bottom: $spacing-6; }
+}
+
+.formGrid {
+  display: grid; grid-template-columns: 1fr; gap: $spacing-4;
+  @include respond-to(md) { grid-template-columns: repeat(2, 1fr); }
+}
+
+.fullWidth { grid-column: 1 / -1; }
+
+.field {
+  display: flex; flex-direction: column; gap: $spacing-1;
+  label { font-size: $font-size-sm; font-weight: $font-weight-medium; color: $gray-700; }
+  input, select { padding: $spacing-3 $spacing-4; border: 1px solid $gray-300; border-radius: $radius-lg; font-size: $font-size-base; transition: border-color $transition-fast; &:focus { outline: none; border-color: $primary; box-shadow: 0 0 0 3px rgba($primary, 0.1); } }
+}
+
+.error { font-size: $font-size-xs; color: $danger; }
+
+.optionGrid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: $spacing-3;
+  @include respond-to(md) { grid-template-columns: repeat(3, 1fr); }
+}
+
+.optionCard {
+  display: flex; flex-direction: column; align-items: center; padding: $spacing-5; border: 2px solid $gray-200; border-radius: $radius-xl; cursor: pointer; text-align: center; transition: all $transition-fast;
+  input { display: none; }
+  &:hover { border-color: $gray-300; }
+  &.selected { border-color: $primary; background: $primary-50; }
+}
+
+.optionLabel { font-size: $font-size-base; font-weight: $font-weight-semibold; color: $gray-900; margin-bottom: 2px; }
+.optionDesc { font-size: $font-size-xs; color: $gray-500; }
+
+.dateField {
+  max-width: 320px;
+  label { display: block; font-size: $font-size-sm; font-weight: $font-weight-medium; color: $gray-700; margin-bottom: $spacing-2; }
+  input { width: 100%; padding: $spacing-3 $spacing-4; border: 1px solid $gray-300; border-radius: $radius-lg; font-size: $font-size-base; &:focus { outline: none; border-color: $primary; box-shadow: 0 0 0 3px rgba($primary, 0.1); } }
+}
+
+.dateNote { font-size: $font-size-sm; color: $gray-500; margin-top: $spacing-4; }
+
+.timeGrid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: $spacing-2;
+  @include respond-to(md) { grid-template-columns: repeat(4, 1fr); }
+}
+
+.timeSlot {
+  display: flex; align-items: center; justify-content: center; padding: $spacing-3; border: 1px solid $gray-200; border-radius: $radius-lg; cursor: pointer; font-size: $font-size-sm; transition: all $transition-fast;
+  input { display: none; }
+  &:hover { border-color: $gray-300; }
+  &.selected { border-color: $primary; background: $primary-50; color: $primary; font-weight: $font-weight-medium; }
+}
+
+.meetingOptions { display: flex; flex-direction: column; gap: $spacing-3; }
+
+.meetingCard {
+  display: flex; align-items: center; gap: $spacing-4; padding: $spacing-5; border: 2px solid $gray-200; border-radius: $radius-xl; cursor: pointer; transition: all $transition-fast;
+  input { display: none; }
+  i { font-size: $font-size-2xl; color: $primary; }
+  &:hover { border-color: $gray-300; }
+  &.selected { border-color: $primary; background: $primary-50; }
+}
+
+.meetingLabel { font-size: $font-size-base; font-weight: $font-weight-semibold; color: $gray-900; display: block; }
+.meetingDesc { font-size: $font-size-sm; color: $gray-500; }
+
+.review {
+  background: $gray-50; border-radius: $radius-xl; padding: $spacing-5; display: flex; flex-direction: column; gap: $spacing-3;
+}
+
+.reviewItem {
+  display: flex; justify-content: space-between; align-items: center; padding: $spacing-2 0; border-bottom: 1px solid $gray-100;
+  span:first-child { font-size: $font-size-sm; color: $gray-500; }
+  span:last-child { font-size: $font-size-sm; font-weight: $font-weight-medium; color: $gray-900; }
+  &:last-child { border-bottom: none; }
+}
+
+.confirmation { text-align: center; padding: $spacing-8 0; }
+.confirmIcon { font-size: 64px; color: $success; margin-bottom: $spacing-4; }
+.confirmDetails { display: flex; justify-content: center; gap: $spacing-6; margin: $spacing-6 0; font-size: $font-size-sm; color: $gray-700; div { display: flex; align-items: center; gap: $spacing-2; } i { color: $primary; } }
+.confirmNote { font-size: $font-size-sm; color: $gray-500; margin-top: $spacing-4; }
+
+.formActions {
+  display: flex; justify-content: space-between; margin-top: $spacing-8; padding-top: $spacing-6; border-top: 1px solid $gray-100;
+}
+
+.backBtn { @include btn-secondary; }
+.nextBtn { @include btn-primary; margin-left: auto; }
+.submitBtn { @include btn-primary; margin-left: auto; background: $success; box-shadow: 0 2px 8px rgba($success, 0.3); &:hover:not(:disabled) { box-shadow: 0 4px 16px rgba($success, 0.4); } }

@@ -8,6 +8,7 @@ import styles from './FeatureDetail.module.scss';
 const featureData: Record<string, {
   title: string; icon: string; tagline: string; description: string;
   problem: string; solution: string;
+  comparison: { aspect: string; traditional: string; lexpilot: string }[];
   benefits: { title: string; desc: string }[];
   workflow: { step: string; desc: string }[];
   faqs: { id: string; question: string; answer: string }[];
@@ -19,6 +20,13 @@ const featureData: Record<string, {
     description: 'LexPilot AI\'s legal research engine uses advanced natural language processing to search across the entire corpus of Indian law — Supreme Court judgments, High Court decisions, tribunal orders, statutes, rules, and legal commentary.',
     problem: 'Legal research in India is time-consuming and fragmented. Lawyers spend 4-6 hours daily searching across multiple databases, often missing relevant precedents buried in thousands of pages. Manual research leads to incomplete analysis and missed deadlines.',
     solution: 'LexPilot AI lets you ask legal questions in plain English or Hindi. Our AI searches across 10 million+ documents, identifies the most relevant cases, and presents results with confidence scores, key excerpts, and proper citations — all in under 10 seconds.',
+    comparison: [
+      { aspect: 'Search Method', traditional: 'Keyword-based, exact match only', lexpilot: 'Natural language + semantic understanding' },
+      { aspect: 'Time per Query', traditional: '2-4 hours manual research', lexpilot: 'Under 10 seconds' },
+      { aspect: 'Coverage', traditional: 'One database at a time', lexpilot: '10M+ documents across all jurisdictions' },
+      { aspect: 'Citation Verification', traditional: 'Manual cross-referencing', lexpilot: 'Auto-verified with confidence scores' },
+      { aspect: 'Output', traditional: 'Raw results, self-organized', lexpilot: 'Ranked results + auto-generated memo' },
+    ],
     benefits: [
       { title: '10x Faster Research', desc: 'What took hours now takes seconds. Ask in natural language and get comprehensive results.' },
       { title: 'Never Miss a Precedent', desc: 'AI searches across all jurisdictions simultaneously, finding cases you might have overlooked.' },
@@ -47,6 +55,13 @@ const featureData: Record<string, {
     description: 'LexPilot AI\'s drafting engine generates first drafts of contracts, petitions, applications, legal opinions, and briefs using AI trained specifically on Indian legal formats and precedents.',
     problem: 'Drafting legal documents from scratch is repetitive and time-consuming. Junior associates spend hours on formatting and boilerplate language instead of substantive legal analysis. Inconsistencies across documents create risk.',
     solution: 'LexPilot AI generates comprehensive first drafts based on your instructions, firm templates, and best practices from Indian law. The AI understands Indian legal formatting, citation styles, and jurisdictional requirements.',
+    comparison: [
+      { aspect: 'First Draft Time', traditional: '3-6 hours manual writing', lexpilot: '2-5 minutes with AI' },
+      { aspect: 'Formatting', traditional: 'Manual, inconsistent across team', lexpilot: 'Auto-formatted to Indian standards' },
+      { aspect: 'Template Usage', traditional: 'Copy-paste from old documents', lexpilot: '500+ templates + firm customization' },
+      { aspect: 'Quality Consistency', traditional: 'Varies by associate experience', lexpilot: 'Consistent, trained on best practices' },
+      { aspect: 'Language Support', traditional: 'English only for most tools', lexpilot: 'English + Hindi with legal terminology' },
+    ],
     benefits: [
       { title: 'Save 3-4 Hours Per Document', desc: 'Get a comprehensive first draft in minutes instead of hours.' },
       { title: 'Indian Legal Formats', desc: 'AI trained on Indian petition formats, contract styles, and legal opinion structures.' },
@@ -74,6 +89,13 @@ const featureData: Record<string, {
     description: 'LexPilot AI\'s contract review engine analyzes contracts against Indian regulatory standards, identifies risks, flags non-standard terms, and suggests improvements — in minutes instead of hours.',
     problem: 'Manual contract review is slow, inconsistent, and error-prone. Lawyers review hundreds of contracts but may miss critical clauses or compliance issues under time pressure. Inconsistent review quality creates liability.',
     solution: 'Upload any contract and get instant AI analysis. LexPilot AI checks against Indian Companies Act, SEBI regulations, RBI guidelines, stamp duty requirements, and your firm\'s playbook — flagging risks and suggesting improvements.',
+    comparison: [
+      { aspect: 'Review Time', traditional: '2-4 hours per contract', lexpilot: '30-60 seconds' },
+      { aspect: 'Risk Coverage', traditional: 'Depends on reviewer experience', lexpilot: '200+ risk factors checked systematically' },
+      { aspect: 'Compliance Check', traditional: 'Manual regulatory lookup', lexpilot: 'Auto-check against 15+ regulations' },
+      { aspect: 'Consistency', traditional: 'Varies across reviewers', lexpilot: 'Standardized playbook-based review' },
+      { aspect: 'Output', traditional: 'Email comments or tracked changes', lexpilot: 'Categorized report + redlines + alternatives' },
+    ],
     benefits: [
       { title: 'Catch Every Risk', desc: 'AI systematically checks 200+ risk factors across every contract.' },
       { title: 'Compliance Verification', desc: 'Auto-check against Companies Act, SEBI, RBI, FEMA, and industry regulations.' },
@@ -101,6 +123,13 @@ const featureData: Record<string, {
     description: 'LexPilot AI provides comprehensive case management designed specifically for Indian courts — track cases, hearings, deadlines, and filings across Supreme Court, High Courts, District Courts, and Tribunals from one unified dashboard.',
     problem: 'Indian law firms manage cases across multiple courts with different procedures, timelines, and filing requirements. Tracking hearing dates, limitation periods, and compliance deadlines manually leads to missed dates and malpractice risk.',
     solution: 'One dashboard to track all your cases across every Indian court. Automatic hearing date updates, limitation period alerts, filing deadline reminders, and integration with court cause lists — so you never miss a date.',
+    comparison: [
+      { aspect: 'Date Tracking', traditional: 'Manual diary entries, Excel sheets', lexpilot: 'Auto-updated from court cause lists' },
+      { aspect: 'Multi-Court', traditional: 'Separate logins per court website', lexpilot: 'All courts in one unified dashboard' },
+      { aspect: 'Deadline Alerts', traditional: 'Calendar reminders, easy to miss', lexpilot: 'Smart alerts with escalation' },
+      { aspect: 'Client Reporting', traditional: 'Manual status emails', lexpilot: 'Auto-generated professional reports' },
+      { aspect: 'Team Coordination', traditional: 'WhatsApp groups, verbal handoffs', lexpilot: 'Structured task assignment & tracking' },
+    ],
     benefits: [
       { title: 'All Courts, One Dashboard', desc: 'Track Supreme Court, High Courts, District Courts, NCLT, and Tribunal matters.' },
       { title: 'Auto Court Date Updates', desc: 'Integration with court websites for automatic hearing date tracking.' },
@@ -184,6 +213,37 @@ export default function FeatureDetail() {
               </div>
             </AnimateOnScroll>
           </div>
+        </div>
+      </section>
+
+      {/* Traditional vs LexPilot Comparison */}
+      <section className={`section ${styles.comparisonSection}`}>
+        <div className="container-custom">
+          <AnimateOnScroll>
+            <h2 className="section-title" style={{ textAlign: 'center', marginBottom: '3rem' }}>Traditional Approach vs LexPilot AI</h2>
+          </AnimateOnScroll>
+          <AnimateOnScroll variant="scale">
+            <div className={styles.comparisonTable}>
+              <div className={styles.comparisonHeader}>
+                <div className={styles.comparisonAspect}>Aspect</div>
+                <div className={styles.comparisonTraditional}>Traditional</div>
+                <div className={styles.comparisonLexpilot}>LexPilot AI</div>
+              </div>
+              {feature.comparison.map((row) => (
+                <div key={row.aspect} className={styles.comparisonRow}>
+                  <div className={styles.comparisonAspect}>{row.aspect}</div>
+                  <div className={styles.comparisonTraditional}>
+                    <i className="bi bi-x-circle" style={{ color: '#ef4444', marginRight: '0.5rem' }} aria-hidden="true" />
+                    {row.traditional}
+                  </div>
+                  <div className={styles.comparisonLexpilot}>
+                    <i className="bi bi-check-circle-fill" style={{ color: '#10b981', marginRight: '0.5rem' }} aria-hidden="true" />
+                    {row.lexpilot}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </AnimateOnScroll>
         </div>
       </section>
 

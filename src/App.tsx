@@ -31,6 +31,7 @@ const Terms = lazy(() => import('@/pages/Legal/Terms'));
 const CookiePolicy = lazy(() => import('@/pages/Legal/CookiePolicy'));
 const Accessibility = lazy(() => import('@/pages/Legal/Accessibility'));
 const Status = lazy(() => import('@/pages/Status/Status'));
+const SEOLanding = lazy(() => import('@/pages/SEOLanding/SEOLanding'));
 const NotFound = lazy(() => import('@/pages/NotFound/NotFound'));
 const ServerError = lazy(() => import('@/pages/ServerError/ServerError'));
 
@@ -67,6 +68,7 @@ function App() {
             <Route path="/terms" element={<Terms />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="/accessibility" element={<Accessibility />} />
+            <Route path="/solutions/:slug" element={<SEOLanding />} />
             <Route path="/status" element={<Status />} />
             <Route path="/500" element={<ServerError />} />
             <Route path="*" element={<NotFound />} />
